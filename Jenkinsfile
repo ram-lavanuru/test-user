@@ -117,7 +117,7 @@ pipeline {
             steps {
                 script {
                     imageValidation().call()
-                    dockerDeploy('dev', '5761', '8761').call()
+                    dockerDeploy('dev', '5232', '8232').call()
                 }
                     }
                     
@@ -131,7 +131,7 @@ pipeline {
             steps {
                 script {
                     imageValidation().call()
-                    dockerDeploy('tst', '6761', '8761').call()
+                    dockerDeploy('tst', '6232', '8232').call()
                 }
                     }
                     
@@ -152,7 +152,7 @@ pipeline {
             steps {
                 script {
                     imageValidation().call()
-                    dockerDeploy('stg', '7761', '8761').call()
+                    dockerDeploy('stg', '7232', '8232').call()
                 }
                     }
                     
@@ -176,7 +176,7 @@ pipeline {
                         input message: "deploying  ${APPLICATION_NAME} to prod, is it okay??", ok: 'yes', submitter: 'ram'
                     }
                 script {
-                    dockerDeploy('prd', '8761', '8761').call()
+                    dockerDeploy('prd', '8232', '8232').call()
                 }
                     }
                     
