@@ -1,0 +1,31 @@
+# Create a Deployment file for user
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: i27-user-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: i27-user-dev
+  template:
+    metadata:
+      labels:
+        app: i27-user-dev
+    spec:
+      containers:
+      - name: i27-user-dev
+        image: DIT # Docker Image Tag, which will be replaces later by sharedlib
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: i27-user-dev-svc
+spec:
+  selector:
+    app: i27-user-dev
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8232
+  type: NodePort

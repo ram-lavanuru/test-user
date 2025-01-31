@@ -1,0 +1,33 @@
+# Create a Deployment file for user in tst environment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: i27-user-tst
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: i27-user-tst
+  template:
+    metadata:
+      labels:
+        app: i27-user-tst
+    spec:
+      containers:
+      - name: i27-user-tst
+        image: DIT # Docker Image Tag, which will be replaces later by sharedlib
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: i27-user-tst-svc
+spec:
+  selector:
+    app: i27-user-tst
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8761
+  type: NodePort
