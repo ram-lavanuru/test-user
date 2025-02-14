@@ -13,8 +13,6 @@ spec:
       labels:
         app: i27-user-dev
     spec:
-      # imagePullSecrets:
-      # - name: jfrog-docker-secret
       containers:
       - name: i27-user-dev
         image: DIT # Docker Image Tag, which will be replaces later by sharedlib
@@ -29,6 +27,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8761
-  # type: ClusterIP
+      targetPort: 8232
   type: NodePort
