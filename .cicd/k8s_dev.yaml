@@ -30,5 +30,23 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8761
-  # type: ClusterIP
-  type: NodePort
+  type: ClusterIP
+
+---
+# Create a ingress for user-dev.i27carts.in
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: i27-user-dev-ingress
+spec:
+  rules:
+  - host: user-dev.vishnuapple.in
+    http:
+      paths: 
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: i27-user-dev-svc
+            port:
+              number: 80
