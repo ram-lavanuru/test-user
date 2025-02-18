@@ -31,7 +31,6 @@ spec:
       port: 80
       targetPort: 8761
   type: NodePort
-  # type: ClusterIP
 
 # ---
 # # Create a ingress for user-dev.i27carts.in
